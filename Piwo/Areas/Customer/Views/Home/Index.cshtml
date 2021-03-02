@@ -1,0 +1,81 @@
+﻿@using Piwo.Models;
+@model X.PagedList.IPagedList<Produkty>;
+@using X.PagedList.Mvc.Core;
+
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Witaj w świecie chmielu";
+}
+
+<br />
+<br />
+
+@foreach (var item in Model)
+{
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+                <label>Nazwa: @item.Name</label>
+                @*<p class="card-text">@item.Name</p>*@
+            </div>
+            <img class="card-img-top" width="150 px" src="/images/NoImage.jpg" alt="Card image cap">
+            <div class="card-body">
+
+
+
+
+
+                <label>Browar: @item.Brewery</label>
+                @*<p>@item.Brewery</p>*@
+
+
+
+
+                @*<label>Zawartość alkoholu</label>
+                    <p class="card-text"> @item.alcoholContent%</p>
+                    <label>Gatunek</label>
+                    <p class="card-text">@item.Category.TypeOfProduct</p>
+                    <label>Cena</label>
+                    <p class="card-text">@item.Price PLN</p>
+                    <label>Dostępność</label>
+                    <p class="card-text">@item.IsAvalible</p>*@
+
+                <a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id" class="btn btn-success">Szczegóły</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    @*<div class="card mb-4">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">
+                    <label style="font-size: 23px"; color:steelblue>@item.Name</label>
+                </h4>
+            </div>
+        </div>*@
+
+
+}
+<div>
+    @Html.PagedListPager(Model, c => Href("~/Customer/Home/Index?Page"+c),PagedListRenderOptions.PageNumbersOnly)
+</div>

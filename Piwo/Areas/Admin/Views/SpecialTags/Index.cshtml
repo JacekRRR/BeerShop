@@ -1,0 +1,49 @@
+﻿@using Piwo.Models;
+@model IEnumerable<SpecialTags>;
+
+@{
+    ViewData["Title"] = "Lista Tagów";
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info"></h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Create" asp-controller="SpecialTags" class="btn btn-info">Dodaj nazwę</a>
+    </div>
+</div>
+
+<br />
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(c => c.TagName):
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TagName</td>
+                <td>
+                    <partial name="_CPartialView" model="@item.Id" />
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+@section Scripts{
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var save = '@TempData["save"]'
+
+            if (save != '') {
+                alertify.success(save)
+            }
+        })
+    </script>
+}

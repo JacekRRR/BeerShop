@@ -1,0 +1,57 @@
+﻿@model Piwo.Models.AppUser;
+
+@{
+    ViewData["Title"] = "Usuń użytkownika";
+}
+
+<br />
+<div style="padding:50px">
+    <h2 class="text-info">Usuń dane użytkownika</h2>
+    <form id="user-form" asp-action="Edit" asp-controller="User" enctype="multipart/form-data" method="post">
+
+        <input type="hidden" asp-for="Id" value="@Model.Id" />
+        <div class="p-4 rounded-border">
+            <div asp-validation-summary="ModelOnly" class="text-danger">
+
+
+            </div>
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="UserName"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="UserName" class="form-control" readonly="readonly" />
+                </div>
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="FirstName"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="FirstName" class="form-control" readonly="readonly" />
+                </div>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="LastName"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="LastName" class="form-control" readonly="readonly" />
+                </div>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input asp-controller="User" asp-area="Customer" type="submit" class="btn btn-primary" value="Usuń" />
+                <a asp-action="Index" class="btn btn-success">Wróć do listy</a>
+            </div>
+        </div>
+
+    </form>
+</div>

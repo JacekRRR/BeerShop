@@ -1,0 +1,148 @@
+﻿@model Piwo.Models.Produkty;
+@{
+    ViewData["Title"] = "Create";
+}
+<br />
+
+<h2 class="text-info">Dodaj piwo</h2>
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="p-4 bordered">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+        <h3>@ViewBag.Message</h3>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Name"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Brewery"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Brewery" class="form-control" />
+            </div>
+            <div>
+                <span asp-validation-for="Brewery" class="text-danger"></span>
+            </div>
+        </div>
+
+        @*<div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Category.TypeOfProduct"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Category.TypeOfProduct" class="form-control" />
+            </div>
+            <div>
+                <span asp-validation-for="Category.TypeOfProduct" class="text-danger"></span>
+            </div>
+        </div>*@
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="alcoholContent"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="alcoholContent" class="form-control" />
+            </div>
+            <div>
+                <span asp-validation-for="alcoholContent" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Price"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Price" class="form-control" />
+            </div>
+            <div>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="IsAvalible"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="IsAvalible" type="checkbox" />
+            </div>
+            <div>
+                <span asp-validation-for="IsAvalible" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="NumberOfItems"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="NumberOfItems" class="form-control" />
+            </div>
+            <div>
+                <span asp-validation-for="NumberOfItems" class="text-danger"></span>
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Image"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Image" class="form-control" type="file" />
+            </div>
+            <div>
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="CategoriesId"></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="CategoriesId" asp-items="ViewBag.CategoriesId" class="form-control"></select>
+
+            </div>
+            <div>
+                <span asp-validation-for="CategoriesId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="SpecialTagId"></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="SpecialTagId" asp-items="ViewBag.SpecialTagsId" class="form-control"></select>
+            </div>
+            <div>
+                <span asp-validation-for="SpecialTagId" class="text-danger"></span>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Zapisz" />
+            <a asp-action="Index" asp-controller="Product" class="btn btn-success">Wróć do listy</a>
+        </div>
+
+    </div>
+</form>

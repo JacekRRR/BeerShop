@@ -1,0 +1,154 @@
+﻿@model Piwo.Models.Produkty;
+@{
+
+    ViewData["Title"] = "Szczegóły";
+}
+<br />
+<br />
+
+<h2 class="text-info">Informacje o produkcie</h2>
+<form asp-action="Details" method="post" enctype="multipart/form-data">
+    <div class="p-4 rounded border row">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+
+        <div class="col-8">
+
+
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Name"></label>
+                </div>
+                <div class="col-8">
+                    <input type="hidden" asp-for="Id" />
+                    <input asp-for="Name" readonly="readonly" class="form-control" />
+                </div>
+                <div>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Brewery"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Brewery" readonly="readonly" class="form-control" />
+                </div>
+                <div>
+                    <span asp-validation-for="Brewery" class="text-danger"></span>
+                </div>
+            </div>
+
+
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="alcoholContent"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="alcoholContent" readonly="readonly" class="form-control" />
+                </div>
+                <div>
+                    <span asp-validation-for="alcoholContent" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Price"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Price" readonly="readonly" class="form-control" />
+                </div>
+                <div>
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="IsAvalible"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="IsAvalible" readonly="readonly" type="checkbox" />
+                </div>
+                <div>
+                    <span asp-validation-for="IsAvalible" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="NumberOfItems"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="NumberOfItems" readonly="readonly" class="form-control" />
+                </div>
+                <div>
+                    <span asp-validation-for="NumberOfItems" class="text-danger"></span>
+                </div>
+            </div>
+
+
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Image"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Image" readonly="readonly" class="form-control" type="file" />
+                </div>
+                <div>
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="CategoriesId"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="CategoriesId" asp-items="ViewBag.CategoriesId" readonly="readonly" class="form-control"/>
+
+                </div>
+                <div>
+                    <span asp-validation-for="CategoriesId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="SpecialTagId"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="SpecialTagId" asp-items="ViewBag.SpecialTagsId" readonly="readonly" class="form-control" />
+                </div>
+                <div>
+                    <span asp-validation-for="SpecialTagId" class="text-danger"></span>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="col-1"></div>
+        <div class="col-3">
+            <img src="~/@Model.Image" width="100%" style="border-radius: 5px; border: 1px solid #efefef" />
+        </div>
+
+
+
+        <div class="form-group">
+           
+            <a asp-action="Index" asp-controller="Product" class="btn btn-success">Wróć do listy</a>
+        </div>
+
+
+
+    </div>
+</form>
+
+
+

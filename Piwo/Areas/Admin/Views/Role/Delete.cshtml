@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "Usówanie rolę";
+}
+
+<h2>Edytowanie roli</h2>
+
+<br />
+
+<form id="role-form" asp-action="Delete" asp-controller="Role" asp-area="Admin" enctype="multipart/form-data" method="post">
+    <div class="p-4 rounded-border">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+
+        </div>
+        <h3>ViewBag.Msg</h3>
+        <div class="form-group row">
+            <div class="col-2">
+                <label>Nazwa</label>
+            </div>
+
+            <div class="col-5">
+                <div id="name" name="name" value="@ViewBag.Name" required="required" class="form-control">@ViewBag.Name</div>
+            </div>
+
+        </div>
+
+
+
+        <div class="form-group">
+            <input asp-controller="Role" asp-area="Admin" type="submit" asp-route-id="@ViewBag.id" class="btn btn-primary" value="Usuń rolę" />
+            <a asp-action="Index" asp-controller="Role" class="btn btn-success">Wróć</a>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts{
+
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+
+
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

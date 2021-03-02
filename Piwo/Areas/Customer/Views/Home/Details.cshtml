@@ -1,0 +1,92 @@
+﻿@using Piwo.Models;
+@using System.Net.Http;
+@using Piwo.Utylity;
+@using Microsoft.AspNetCore.Http;
+@model Produkty;
+@inject IHttpContextAccessor HttpContextAccsesor
+
+@{
+
+    List<Produkty> products = HttpContextAccsesor.HttpContext.Session.Get<List<Produkty>>("products");
+
+    Produkty product = null;
+    if (products != null)
+    {
+        product = products.FirstOrDefault(x => x.Id == Model.Id);
+    }
+
+
+}
+
+
+
+@{
+    ViewData["Title"] = "Szczegóły";
+}
+
+<div class="col-md-4">
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            <label>Nazwa: @Model.Name</label>
+            @*<p class="card-text">@item.Name</p>*@
+        </div>
+        <img class="card-img-top" width="250px" src="/images/NoImage.jpg" alt="Card image cap">
+        <div class="card-body">
+
+
+
+
+
+            <label>Browar: @Model.Brewery</label>
+            @*<p>@item.Brewery</p>*@
+
+
+
+
+            <label>Zawartość alkoholu: @Model.alcoholContent%</label>
+            @*<p class="card-text"> @item.alcoholContent%</p>
+                <label>Gatunek</label>
+                <p class="card-text">@item.Category.TypeOfProduct</p>
+                <label>Cena</label>
+                <p class="card-text">@item.Price PLN</p>
+                <label>Dostępność</label>
+                <p class="card-text">@item.IsAvalible</p>
+
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success">Szczegóły</a>*@
+
+
+            <div class="col-6">
+                <form method="post" asp-action="Details" asp-controller="Home" asp-area="Customer">
+
+                    @if (product != null)
+                    {
+                        <button type="submit" class="btn btn-danger form-control" asp-action="Remove" asp-route-id="@Model.Id">Usuń z koszyka</button>
+                    }
+                    else
+                    {
+                    <input type="submit" class="btn btn-success form-control" value="Dodaj do koszyka" />
+                    }
+                    
+
+                    <button asp-action="Index" asp-controller="Home" class="btn btn-success form-control ">Wróć do listy piw</button>
+
+                </form>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+</div>

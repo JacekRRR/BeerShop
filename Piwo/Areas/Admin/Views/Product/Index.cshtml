@@ -1,0 +1,112 @@
+﻿@using Piwo.Models
+@model IEnumerable<Produkty>;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+
+<div class="row">
+    <div class="col-12">
+        <h2 class="text-info">Piwa</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-controller="Product" asp-action="Create" class="btn btn-info">&nbsp;Dodaj produkt</a>
+    </div>
+</div>
+
+<form method="post">
+    <div class="row">
+        <div class="col-3">
+            <label>Najniższa cena</label>
+            <input type="number" class="form-control" name="lowPrice" />
+
+        </div>
+        <div class="col-3">
+            <label>Najwyższa cena</label>
+            <input type="number" class="form-control" name="highPrice" />
+        </div>
+        <div class="col-3">
+            <input type="submit" value="Szukaj" class="btn btn-success" />
+        </div>
+    </div>
+
+</form>
+<br />
+<div>
+    <table class="table table-striped bordered" id="myTable">
+        <thead>
+            <tr class="table-info">
+                <th>
+                    @Html.DisplayNameFor(c => c.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.Brewery)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.alcoholContent)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.IsAvalible)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.NumberOfItems)
+                </th>
+                <th>
+                   
+                </th>
+                <th style="text-align:center;">
+                    Akcje
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td style="text-align:left;"> @item.Name</td> 
+                    <td style="text-align:left;">@item.Brewery</td>
+                    <td style="text-align:left;">@item.Category.TypeOfProduct</td>
+                    <td style="text-align:right;">@item.alcoholContent%</td>
+                    <td style="text-align:right;">@item.Price</td>
+                    <td style="text-align:center;"><input type="checkbox" checked="@item.IsAvalible" onclick="return false;"/></td>
+                    <td style="text-align:right;">@item.NumberOfItems</td>
+
+                    <td>
+                            <partial name="CPartialView" model="@item.Id" />
+                    </td>
+                    
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+@section scripts{
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+    </script>
+
+}
+

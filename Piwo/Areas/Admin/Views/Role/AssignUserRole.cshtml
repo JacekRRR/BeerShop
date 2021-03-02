@@ -1,0 +1,48 @@
+﻿﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Rola przypisana użytkownikowi</h2>
+    </div>
+    
+</div>
+<br />
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>
+                Nazwa użytkownika
+            </th>
+
+            <th>Rola Użytkownika</th>
+        </tr>
+           @foreach (var item in ViewBag.UserRoles)
+        {
+            <tr>
+                <td> @item.UserName</td>
+                <td >@item.RoleName</td>
+
+            </tr>
+        }
+    </table>
+</div>
+
+
+
+@section Scripts{
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+    <script type="text/javascript">
+    $(function () {
+        var save = '@TempData["save"]
+        if (save != '') {
+            alertify.success(save);
+        }
+
+    })
+    </script>
+}

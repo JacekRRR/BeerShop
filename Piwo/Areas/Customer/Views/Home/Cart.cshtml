@@ -1,0 +1,57 @@
+﻿@using Piwo.Models;
+@model List<Produkty>;
+
+@{
+    ViewData["Title"] = "Karta";
+}
+
+<h2>Twoja karta</h2>
+
+<br/>
+
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Obraz</th>
+                <th>Nazwa</th>
+                <th>Browar</th>
+             
+                <th>Cena</th>
+               
+
+                <th></th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="~/@item.Image"  />
+                    </td>
+                    <td>@item.Name</td>
+                    <td>@item.Brewery</td>
+                    <td>@item.Price</td>
+
+                    <td>
+                        <a asp-action="Remove" asp-controller="Home" asp-route-id="@item.Id"class="btn btn-danger">Usuń z karty</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="row">
+    <div class="col-6">
+        <a asp-area="Customer" asp-action="Index" asp-controller="Home" class="btn btn-info">Wróc do sklepu</a>
+    </div>
+    <div class="col-6 text-right">
+        <h3>Kwota</h3>
+        <h3>@Model.Sum(c=>c.Price)</h3>
+        <a asp-area="Customer"asp-action="CheckOut" asp-controller="Order" class="btn btn-info">Wróc chec</a>
+    </div>
+</div>
+

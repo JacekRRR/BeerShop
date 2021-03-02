@@ -1,0 +1,98 @@
+﻿@model Piwo.Models.AppUser;
+
+@{
+    ViewData["Title"] = "Dodaj użytkownika";
+}
+
+<h2>Dodawanie użytkownika</h2>
+
+<br />
+<h2 class="text-info">Nowy użytkownik</h2>
+<form id="user-form" asp-action="Create" asp-controller="User" enctype="multipart/form-data" method="post">
+    <div class="p-4 rounded-border">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="UserName"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="UserName" class="form-control" />
+            </div>
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="PasswordHash"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="PasswordHash" class="form-control" type="password" />
+            </div>
+            <span asp-validation-for="PasswordHash" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="FirstName"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="FirstName" class="form-control" />
+            </div>
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="LastName"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="LastName" class="form-control" />
+            </div>
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input asp-controller="User" asp-area="Customer" type="submit" class="btn btn-primary" value="Zapisz" />
+            <a asp-action="Index" class="btn btn-success">Wróć do listy</a>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts{
+
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+
+
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+
+        $(document).ready(function () {
+            $("#user-form").validate({
+                rules: {
+                    UserName: {
+                        required: true
+                    },
+                    PasswordHash: {
+                        required: true
+                    }
+                },
+                    messages: {
+                        UserName: "Podaj nazwę użytkownika",
+                        PasswordHash:"By zarejestrować użytkownika musisz podać hasło"
+                    }
+
+
+                
+            });
+        });
+    </script>
+
+
+
+}
