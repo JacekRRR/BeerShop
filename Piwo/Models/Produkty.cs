@@ -45,7 +45,7 @@ namespace Piwo.Models
         public int SpecialTagId { get; set; }
         
 
-        public SpecialTags specialTags { get; set; }
+        public TypeOfPacking specialTags { get; set; }
 
         [Display(Name ="Cena")]
         public decimal Price { get; set; }

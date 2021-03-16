@@ -31,7 +31,7 @@ namespace Piwo.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(SpecialTags tag)
+        public async Task<ActionResult> Create(TypeOfPacking tag)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace Piwo.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit( SpecialTags tag)
+        public async Task<ActionResult> Edit( TypeOfPacking tag)
         {
             if (ModelState.IsValid)
             {
@@ -126,7 +126,7 @@ namespace Piwo.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<ActionResult> Delete (int? id, SpecialTags tag)
+        public async Task<ActionResult> Delete (int? id, TypeOfPacking tag)
         {
             if (id == null)
             {

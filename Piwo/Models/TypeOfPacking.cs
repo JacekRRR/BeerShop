@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Piwo.Models
 {
-    public class SpecialTags
+    public class TypeOfPacking
     {
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Pole nie może być puste")]
         [Display(Name = "Nazwa")]
-        public string TagName { get; set; }
+        public string TypeName { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace Piwo.Data
         }
         public DbSet<Categories> Kategorie { get; set; }
 
-        public DbSet<SpecialTags> Tags { get; set; }
+        public DbSet<TypeOfPacking> Tags { get; set; }
 
         public DbSet<Produkty> Piwa { get; set; }
 
